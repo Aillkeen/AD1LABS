@@ -7,9 +7,9 @@ editor_options:
 
 # Introdução
 
-Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
+Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas de séries, e dados sobre episódios dessas séries. O conjunto de dados e outras informações podem ser acessados em https://github.com/nazareno/imdb-series.
 
-Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
+Para análise dos dados vamos utilizar apenas 4 séries do conjunto total, são elas:
 
 * Sherlock
 * Nikita
@@ -54,13 +54,13 @@ ggplot(dados, mapping = aes(x=season, y=user_rating)) +
     facet_wrap(~series_name, ncol = 2)
 ```
 
-Tomando como base a média das notas no primeiro gráfico, apesar da série Sherlock ter ficado em primeiro lugar, podemos ver no gráfico acima que a partir da segunda temporada a série teve uma queda nas notas atribuídas pelos usuários, enquando que na série Agents of S.H.I.E.L.D houve uma melhora nas notas atribuídas pelos usuários ao longo das temporadas. Podemos inferir que as pessoas que assitem a série Agents of S.H.I.E.L.D não gostaram da série de início, mas ao longo das temporadas suas opiniões mudaram e começaram a gostar da série. 
+No primeiro gráfico, apesar da série Sherlock ter ficado em primeiro lugar, podemos ver no gráfico acima que a partir da segunda temporada a série teve uma queda nas notas atribuídas pelos usuários, enquando que na série Agents of S.H.I.E.L.D houve uma melhora nas notas atribuídas pelos usuários ao longo das temporadas. Podemos inferir que as pessoas que assitem a série Agents of S.H.I.E.L.D não gostaram da série de início, mas ao longo das temporadas suas opiniões mudaram e começaram a gostar da série. 
 
 No entanto, na série Sherlock ocorreu o oposto, teve um grande apreço pelo público de início, mas ao longo das temporadas esse apreço caiu. Na série Nikita, as notas se mantiveram quase estáveis, porém com tendência ao aumento de sua nota nas últimas temporadas, e na série Vikings as notas começaram a cair a partir da segunda temporada.
 
 # Irregularidade de espisódios
 
-Analisamos e mostramos nos gráficos anteriores informações referentes aos votos de cada série, mas será que houve irregulariade em seus episódios? Para podermos responder essa pergunta e visualizar se houve irregularidade ou não, vamos analisar a nota em função dos episódios de cada série. Como critério para irregularidade vamos considerar o pico de nota de um episóddio para outro.
+Analisamos e mostramos nos gráficos anteriores informações referentes aos votos de cada série, mas será que houve irregulariade em seus episódios? Para poder responder essa pergunta e visualizar se houve irregularidade ou não, vamos analisar a nota em função dos episódios de cada série. Como critério para irregularidade vamos considerar o pico de nota de um episóddio para outro.
 
 ```{r warning= FALSE, message=FALSE}
 ggplot(dados, mapping = aes(x=series_ep, y=user_rating)) + 
@@ -68,5 +68,5 @@ ggplot(dados, mapping = aes(x=series_ep, y=user_rating)) +
     facet_wrap(~series_name, ncol = 2, scales = 'free_x')
 ```
 
-Podemos observar no gráfico acima o comportamento de cada série ao longo dos episódios, e podemos notar que não houve uma mudança brusca ou irregularidade de um episódio para outro, com exceção de Sherlock que apresentou uma tendêcia ao decaimento da nota ao longo dos episódios.
+Podemos observar no gráfico acima o comportamento de cada série ao longo dos episódios, e podemos notar que não houve uma mudança brusca ou irregularidade de um episódio para outro, porém a série Sherlock apresentou uma tendência ao decaimento da nota ao longo dos episódios.
 

@@ -5,7 +5,7 @@ editor_options:
   chunk_output_type: inline
 ---
 
-Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB. O IMDB é um site que contém diversas informações sobre séries, filmes, celebridades etc. O conteúdo utilizado nas analises a seguir pode ser encontrado em https://github.com/nazareno/imdb-series.
+Os dados que serão analisados a seguir, são dados referentes de séries presentes no IMDB. O IMDB é um site que contém diversas informações sobre séries, filmes, celebridades etc. O conteúdo utilizado nas analises a seguir pode ser encontrado em https://github.com/nazareno/imdb-series.
 
 Os dados estão organizados em um arquivo csv no qual contém as seguintes informações:
 
@@ -18,6 +18,7 @@ Os dados estão organizados em um arquivo csv no qual contém as seguintes infor
 * __UserRating__: classificação do episódio de acordo com as notas atribuídas pelos usuários 
 * __UserVotes__: número de votos recebidos
 * __r1, r2,r3,r4..., r10__: proporção de usuários que classificaram o episódio com pontuação 1, 2,3,4..., 10
+
 
 
 * Bibliotecas utilizadas
@@ -35,7 +36,7 @@ dados = read_csv("data/series_from_imdb.csv")
 
 #A quantidade de espectadores cresce/decresce ao passo que as avaliações também cresce/decresce?
 
-Nem sempre as séries agradam a todos, muitos dos que começam a assistir a uma determinada série desistem dela por não achar interessante, porém o inverso também é verdadeiro, algumas pessoas começam a série sem gostar e após algumas temporadas são visgadas pela série. Com base nessa questão, analisaremos se a quantidade de espectadores cresce/decresce ao passo que as avaliações referente as séries tbm cresce/decresce. Como no conjunto de dados não possui valores que referenciem a audiência do público em relação a série, utilizaremos a quantidade de votos como base para definir a quantidade de espectadores. Além disso, como a quantidade de dados é um pouco grande, utilizaremos apenas séries que possuem no mínimo 15 temporadas.
+Nem sempre as séries agradam a todos, muitos dos que começam a assistir a uma determinada série desistem dela por não achar interessante, porém o inverso também é verdadeiro, algumas pessoas começam a série sem gostar e após algumas temporadas são fisgadas pela série. Com base nessa questão, analisaremos se a quantidade de espectadores cresce/decresce ao passo que as avaliações referente as séries tbm cresce/decresce. Como no conjunto de dados não possui valores que referenciem a audiência do público em relação a série, utilizaremos a quantidade de votos como base para definir a quantidade de espectadores. Além disso, como a quantidade de dados é um pouco grande, utilizaremos apenas séries que possuem no mínimo 15 temporadas.
 
 ```{r message=FALSE}
 
@@ -49,11 +50,11 @@ ggplot(data = series, mapping = aes(x = user_rating, y = user_votes, color = ser
            facet_wrap(~series_name, scales = "free_x", nrow = 4,ncol = 2) 
 ```
 
-Podemos perceber que a quantidade de espectadores não crescem/decrescem ao passo que as notas crescem/decrescem, apenas na série The Simpsons houve essa relação, pois ao passo que a nota cresceu a quantidade de espectadores tbm cresceu.
+Podemos perceber que a quantidade de espectadores não cresce/decresce ao passo que as notas crescem/decrescem, apenas na série The Simpsons houve essa relação, pois ao passo que a nota cresceu a quantidade de espectadores tbm cresceu.
 
 # Qual a média de temporadas das mais bem avaliadas e das menos avaliadas?
 
-Será que séries com mais temporadas são mais bem avaliadas do que séries com menos temporadas? Para respondermos essa questão, utilizaremos como base séries que possuem no mínimo 15 temporadas.
+Será que séries com mais temporadas são mais bem avaliadas do que séries com menos temporadas? Para respondermos essa questão utilizaremos como base séries que possuem no mínimo 15 temporadas.
 
 ```{r message=FALSE}
 
@@ -75,7 +76,7 @@ Como podemos ver no gráfico acima, nem sempre a quantidade de temporadas define
 
 # A nota atribuída ao último episódio da série é maior que os demais ?
 
-Os ultimos episódios das séries geralmente tendem a causar mais impacto nos telespectadores por ser o episódio de encerramento da série, mas será que esse impacto influência na nota atribuída a esse episódio em relação aos demais? Como o conjunto de dados é muito grande, vamos analisar apenas as séries que possuem no mínimo 400 episódios e então verificaremos a resposta para esta questão.
+Os últimos episódios das séries geralmente tendem a causar mais impacto nos telespectadores por ser o episódio de encerramento da série, mas será que esse impacto influência na nota atribuída a esse episódio em relação aos demais? Como o conjunto de dados é muito grande, vamos analisar apenas as séries que possuem no mínimo 400 episódios e então verificaremos a resposta para esta questão.
 
 ```{r message=FALSE}
 
@@ -94,11 +95,11 @@ ggplot(filteredSeries, mapping = aes(x = series_ep, y = user_rating, color = ser
 
 ```
 
-Como podemos perceber, a nota atribuída ao último episódio não foi tão diferenciada se comparada aos demais episódios, em geral as notas se mantiveram equilibradas ao longo dos episódios inclusive no último.
+Como podemos perceber, a nota atribuída ao último episódio não foi tão diferenciada se comparada aos demais episódios, em geral as notas se mantiveram equilibradas ao longo dos episódios, inclusive no último.
 
 # Series com maior quantidade de votos tendem a ter notas melhores ou piores?
 
-Séra qua a quantidade de espectadores que votam em determinada série influenciam no valore final da nota geral atribuída a elas? Vamos considerar as séries com mais de 400 episódios para responder essa questão.
+Séra qua a quantidade de espectadores que votam em determinada série influenciam no valor final da nota atribuída a elas? Vamos considerar as séries com mais de 400 episódios para responder essa questão.
 
 ```{r message=FALSE}
 
@@ -116,5 +117,5 @@ ggplot(filteredSeries, mapping = aes(x = user_votes, y = user_rating, color = se
   facet_wrap(~series_name, scales = "free_x", nrow = 3, ncol = 2)
 ```
 
-Como podemos perceber, não existe uma verdade absoluta entre a quantidade de espectadores e a nota final da série, pois na série American Idol ao passo que a quantidade de votos aumentaram a nota subiu consideravelmente, porém na série Law e Order ao passo que a quantidade de votos aumentou a nota decresceu consideravelmente. Nesse caso, podemos inferir que a quantidade de votos não influência de forma geral a nota final da série, mas influencia, apenas individualmente, cada série.
+Como podemos perceber, não existe uma verdade absoluta entre a quantidade de espectadores e a nota final da série, pois na série American Idol ao passo que a quantidade de votos aumentaram a nota tbm subiu consideravelmente, porém na série Law e Order ao passo que a quantidade de votos aumentou a nota decresceu consideravelmente. Nesse caso, podemos inferir que a quantidade de votos não influência de forma geral a nota final da série.
     
