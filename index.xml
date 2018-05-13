@@ -1,38 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Análise de Dados 1</title>
-    <link>/AD1LABS/</link>
-    <description>Recent content on Análise de Dados 1</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="/AD1LABS/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>Problema 1 Checkpoint 1 - Nossa pergunta</title>
-      <link>/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/</guid>
-      <description>IntroduçãoOs dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
-Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
-SherlockNikitaAgents of S.H.I.E.L.D.Vikings
-Bibliotecas utilizadas
-library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&amp;quot;data/series_from_imdb.</description>
-    </item>
-    
-    <item>
-      <title>Problema 1 Checkpoint 3 - Sua análise</title>
-      <link>/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/</guid>
-      <description>Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB. O IMDB é um site que contém diversas informações sobre séries, filmes, celebridades etc. O conteúdo utilizado nas analises a seguir pode ser encontrado em https://github.com/nazareno/imdb-series.
-Os dados estão organizados em um arquivo csv no qual contém as seguintes informações:
-series_name: o nome da sérieseries_ep: o número referente ao episódioseason: número da temporadaseason_ep: número do episódio na temporadaurl: url para a página do episódio no IMDBEpisode: título do episódioUserRating: classificação do episódio de acordo com as notas atribuídas pelos usuáriosUserVotes: número de votos recebidosr1, r2,r3,r4…, r10: proporção de usuários que classificaram o episódio com pontuação 1, 2,3,4…, 10</description>
-    </item>
-    
-  </channel>
-</rss>
