@@ -40,7 +40,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
 library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&quot;data/series_from_imdb.">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Problema 1 Checkpoint 1 - Nossa pergunta">
-    <meta property="og:url" content="/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+    <meta property="og:url" content="/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
     <meta property="og:site_name" content="Análise de Dados 1">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Análise de Dados 1">
@@ -86,7 +86,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
       <header id="header" data-behavior="1">
   <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
   <div class="header-title">
-    <a class="header-title-link" href="/">Análise de Dados 1</a>
+    <a class="header-title-link" href="/AD1LABS/">Análise de Dados 1</a>
   </div>
   
     
@@ -120,7 +120,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/">
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/">
     
       <i class="sidebar-button-icon fa fa-lg fa-home"></i>
       
@@ -130,7 +130,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/#about">
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/#about">
     
       <i class="sidebar-button-icon fa fa-lg fa-question"></i>
       
@@ -140,7 +140,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
 
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/#about">
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/#about">
     
       <i class="sidebar-button-icon fa fa-lg fa-question"></i>
       
@@ -168,7 +168,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
       
   <li class="sidebar-button">
     
-      <a class="sidebar-button-link " href="/index.xml">
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/index.xml">
     
       <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
       
@@ -236,7 +236,7 @@ library(rvest)</code></pre>
 <p>Como podemos ver no gráfico abaixo, a série Sherlock teve a maior média de acordo com as notas atribuídas pelos usuários, seguido pela série Nikita, Agents of Shield e Vikings. Também é possivel perceber que a diferença na média de nota entre essas quatro séries não é muito grande, todas elas se encontram com notas aproximadas de forma geral, apenas a série Vikings teve uma classificação um pouco mais baixa que as demais.</p>
 <pre class="r"><code>ggplot(dados, aes(x=series_name, y=user_rating, fill = series_name)) + 
     stat_summary(fun.y=&quot;mean&quot;, geom=&quot;bar&quot;)</code></pre>
-<p><img src="/post/LAB1C1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="muda-de-acordo-com-as-temporadas-da-serie" class="section level1">
 <h1>Muda de acordo com as temporadas da série?</h1>
@@ -245,7 +245,7 @@ library(rvest)</code></pre>
     geom_smooth(aes(color = series_name, fill = series_name)) + 
     geom_jitter(aes(color = series_name)) +
     facet_wrap(~series_name, ncol = 2)</code></pre>
-<p><img src="/post/LAB1C1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Tomando como base a média das notas no primeiro gráfico, apesar da série Sherlock ter ficado em primeiro lugar, podemos ver no gráfico acima que a partir da segunda temporada a série teve uma queda nas notas atribuídas pelos usuários, enquando que na série Agents of S.H.I.E.L.D houve uma melhora nas notas atribuídas pelos usuários ao longo das temporadas. Podemos inferir que as pessoas que assitem a série Agents of S.H.I.E.L.D não gostaram da série de início, mas ao longo das temporadas suas opiniões mudaram e começaram a gostar da série.</p>
 <p>No entanto, na série Sherlock ocorreu o oposto, teve um grande apreço pelo público de início, mas ao longo das temporadas esse apreço caiu. Na série Nikita, as notas se mantiveram quase estáveis, porém com tendência ao aumento de sua nota nas últimas temporadas, e na série Vikings as notas começaram a cair a partir da segunda temporada.</p>
 </div>
@@ -255,7 +255,7 @@ library(rvest)</code></pre>
 <pre class="r"><code>ggplot(dados, mapping = aes(x=series_ep, y=user_rating)) + 
     geom_smooth(aes(color = series_name, fill = series_name, scales = &#39;free_x&#39;)) + 
     facet_wrap(~series_name, ncol = 2, scales = &#39;free_x&#39;)</code></pre>
-<p><img src="/post/LAB1C1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Podemos observar no gráfico acima o comportamento de cada série ao longo dos episódios, e podemos notar que não houve uma mudança brusca ou irregularidade de um episódio para outro, com exceção de Sherlock que apresentou uma tendêcia ao decaimento da nota ao longo dos episódios.</p>
 </div>
 
@@ -273,7 +273,7 @@ library(rvest)</code></pre>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -299,19 +299,19 @@ library(rvest)</code></pre>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -359,7 +359,7 @@ library(rvest)</code></pre>
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
+                <a class="post-action-btn btn btn--default tooltip--top" href="/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -385,19 +385,19 @@ library(rvest)</code></pre>
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -427,19 +427,19 @@ library(rvest)</code></pre>
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faillkeen.github.io%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Faillkeen.github.io%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Faillkeen.github.io%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -500,7 +500,7 @@ library(rvest)</code></pre>
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://aillkeen.github.io/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <a class="link-unstyled" href="https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
                 <h3 class="media-heading">Problema 1 Checkpoint 1 - Nossa pergunta</h3>
               </a>
               <span class="media-meta">
@@ -521,7 +521,7 @@ Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são
           <div class="media">
             
             <div class="media-body">
-              <a class="link-unstyled" href="https://aillkeen.github.io/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/">
+              <a class="link-unstyled" href="https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/">
                 <h3 class="media-heading">Problema 1 Checkpoint 3 - Sua análise</h3>
               </a>
               <span class="media-meta">
@@ -552,7 +552,7 @@ Os dados estão organizados em um arquivo csv no qual contém as seguintes infor
     
   
     
-    <div id="cover" style="background-image:url('https://aillkeen.github.io/images/cover.jpg');"></div>
+    <div id="cover" style="background-image:url('https://aillkeen.github.io/AD1LABS/images/cover.jpg');"></div>
   
 
 
@@ -585,9 +585,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/aillkeen.github.io\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/';
+          this.page.url = 'https:\/\/aillkeen.github.io\/AD1LABS\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/';
           
-            this.page.identifier = '\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/'
+            this.page.identifier = '\/AD1LABS\/AD1LABS\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/'
           
         };
         (function() {
