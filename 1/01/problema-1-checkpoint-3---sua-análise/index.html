@@ -241,7 +241,7 @@ series = filter(dados, series_name %in% c(series_15_seasons$series_name))
 ggplot(data = series, mapping = aes(x = user_rating, y = user_votes, color = series_name)) +
            geom_point(aes(alpha = .2)) +
            facet_wrap(~series_name, scales = &quot;free_x&quot;, nrow = 4,ncol = 2) </code></pre>
-<p><img src="/AD1LABSpost/LAB1C3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C3_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>Podemos perceber que a quantidade de espectadores não crescem/decrescem ao passo que as notas crescem/decrescem, apenas na série The Simpsons houve essa relação, pois ao passo que a nota cresceu a quantidade de espectadores tbm cresceu.</p>
 </div>
 <div id="qual-a-media-de-temporadas-das-mais-bem-avaliadas-e-das-menos-avaliadas" class="section level1">
@@ -259,7 +259,7 @@ orderedSeries &lt;- arrange(series, desc(seasonMean))
 
 ggplot(data = orderedSeries, mapping = aes(x = seasonMean, y = userRatingMean, fill = series_name)) +
    geom_bar(stat = &quot;identity&quot;)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C3_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Como podemos ver no gráfico acima, nem sempre a quantidade de temporadas define a avaliação da série, por exemplo: as séries American Idol e Bleach tiveram a mesma quantidade de temporadas, porém elas tiveram uma nota média diferente. Da mesma forma, a série Survivor teve em torno de 35 temporadas e mesmo assim obteve uma avaliação próxima da série One Piece que teve cerca de 20 temporadas.</p>
 </div>
 <div id="a-nota-atribuida-ao-ultimo-episodio-da-serie-e-maior-que-os-demais" class="section level1">
@@ -276,7 +276,7 @@ ggplot(filteredSeries, mapping = aes(x = series_ep, y = user_rating, color = ser
     geom_line() +
     geom_smooth() +
     facet_wrap(~series_name, scales = &quot;free_x&quot;, nrow = 3, ncol = 2)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C3_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Como podemos perceber, a nota atribuída ao último episódio não foi tão diferenciada se comparada aos demais episódios, em geral as notas se mantiveram equilibradas ao longo dos episódios inclusive no último.</p>
 </div>
 <div id="series-com-maior-quantidade-de-votos-tendem-a-ter-notas-melhores-ou-piores" class="section level1">
@@ -293,7 +293,7 @@ ggplot(filteredSeries, mapping = aes(x = user_votes, y = user_rating, color = se
     geom_hline(aes(yintercept = mean(user_rating)), linetype=&quot;dashed&quot;, colour=&quot;black&quot;) +
     geom_smooth() +
   facet_wrap(~series_name, scales = &quot;free_x&quot;, nrow = 3, ncol = 2)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C3_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Como podemos perceber, não existe uma verdade absoluta entre a quantidade de espectadores e a nota final da série, pois na série American Idol ao passo que a quantidade de votos aumentaram a nota subiu consideravelmente, porém na série Law e Order ao passo que a quantidade de votos aumentou a nota decresceu consideravelmente. Nesse caso, podemos inferir que a quantidade de votos não influência de forma geral a nota final da série, mas influencia, apenas individualmente, cada série.</p>
 </div>
 

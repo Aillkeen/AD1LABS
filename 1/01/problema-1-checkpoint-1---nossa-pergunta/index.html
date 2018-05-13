@@ -240,7 +240,7 @@ library(rvest)</code></pre>
 <p>Como podemos ver no gráfico abaixo, a série Sherlock teve a maior média de acordo com as notas atribuídas pelos usuários, seguido pela série Nikita, Agents of Shield e Vikings. Também é possivel perceber que a diferença na média de nota entre essas quatro séries não é muito grande, todas elas se encontram com notas aproximadas de forma geral, apenas a série Vikings teve uma classificação um pouco mais baixa que as demais.</p>
 <pre class="r"><code>ggplot(dados, aes(x=series_name, y=user_rating, fill = series_name)) + 
     stat_summary(fun.y=&quot;mean&quot;, geom=&quot;bar&quot;)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 </div>
 <div id="muda-de-acordo-com-as-temporadas-da-serie" class="section level1">
 <h1>Muda de acordo com as temporadas da série?</h1>
@@ -249,7 +249,7 @@ library(rvest)</code></pre>
     geom_smooth(aes(color = series_name, fill = series_name)) + 
     geom_jitter(aes(color = series_name)) +
     facet_wrap(~series_name, ncol = 2)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>Tomando como base a média das notas no primeiro gráfico, apesar da série Sherlock ter ficado em primeiro lugar, podemos ver no gráfico acima que a partir da segunda temporada a série teve uma queda nas notas atribuídas pelos usuários, enquando que na série Agents of S.H.I.E.L.D houve uma melhora nas notas atribuídas pelos usuários ao longo das temporadas. Podemos inferir que as pessoas que assitem a série Agents of S.H.I.E.L.D não gostaram da série de início, mas ao longo das temporadas suas opiniões mudaram e começaram a gostar da série.</p>
 <p>No entanto, na série Sherlock ocorreu o oposto, teve um grande apreço pelo público de início, mas ao longo das temporadas esse apreço caiu. Na série Nikita, as notas se mantiveram quase estáveis, porém com tendência ao aumento de sua nota nas últimas temporadas, e na série Vikings as notas começaram a cair a partir da segunda temporada.</p>
 </div>
@@ -259,7 +259,7 @@ library(rvest)</code></pre>
 <pre class="r"><code>ggplot(dados, mapping = aes(x=series_ep, y=user_rating)) + 
     geom_smooth(aes(color = series_name, fill = series_name, scales = &#39;free_x&#39;)) + 
     facet_wrap(~series_name, ncol = 2, scales = &#39;free_x&#39;)</code></pre>
-<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="/AD1LABS/post/LAB1C1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Podemos observar no gráfico acima o comportamento de cada série ao longo dos episódios, e podemos notar que não houve uma mudança brusca ou irregularidade de um episódio para outro, com exceção de Sherlock que apresentou uma tendêcia ao decaimento da nota ao longo dos episódios.</p>
 </div>
 
