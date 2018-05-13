@@ -1,0 +1,623 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.40.3 with theme Tranquilpeak 0.4.3-BETA">
+    <title>Problema 1 Checkpoint 1 - Nossa pergunta</title>
+    <meta name="author" content="Aillkeen">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="/favicon.png">
+    
+
+    
+    <meta name="description" content="IntroduçãoOs dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
+Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
+SherlockNikitaAgents of S.H.I.E.L.D.Vikings
+Bibliotecas utilizadas
+library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&quot;data/series_from_imdb.">
+    <meta property="og:description" content="IntroduçãoOs dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
+Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
+SherlockNikitaAgents of S.H.I.E.L.D.Vikings
+Bibliotecas utilizadas
+library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&quot;data/series_from_imdb.">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Problema 1 Checkpoint 1 - Nossa pergunta">
+    <meta property="og:url" content="/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+    <meta property="og:site_name" content="Análise de Dados 1">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Análise de Dados 1">
+    <meta name="twitter:description" content="IntroduçãoOs dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
+Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
+SherlockNikitaAgents of S.H.I.E.L.D.Vikings
+Bibliotecas utilizadas
+library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&quot;data/series_from_imdb.">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+    
+
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="/css/style-jsjn0006wyhpyzivf6yceb31gvpjatbcs3qzjvlumobfnugccvobqwxnnaj8.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://aillkeen.github.io/AD1LABS/css/mystyle.css">
+      
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="1">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="/AD1LABS/">Análise de Dados 1</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="1">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="/#about">
+          <img class="sidebar-profile-picture" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">Aillkeen</h4>
+        
+          <h5 class="sidebar-profile-bio">Undergraduate in Computer Science - UFCG</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">Code</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Aillkeen" target="_blank" rel="noopener">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="/AD1LABS/AD1LABS/index.xml">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+      
+      <span class="sidebar-button-desc">RSS</span>
+    </a>
+  </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="1"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-left">
+  
+    <h1 class="post-title" itemprop="headline">
+      Problema 1 Checkpoint 1 - Nossa pergunta
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="0001-01-01T00:00:00Z">
+        
+  January 1, 1
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <div id="introducao" class="section level1">
+<h1>Introdução</h1>
+<p>Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em <a href="https://github.com/nazareno/imdb-series" class="uri">https://github.com/nazareno/imdb-series</a>.</p>
+<p>Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:</p>
+<ul>
+<li>Sherlock</li>
+<li>Nikita</li>
+<li>Agents of S.H.I.E.L.D.</li>
+<li><p>Vikings</p></li>
+<li><p>Bibliotecas utilizadas</p></li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+library(rvest)</code></pre>
+<ul>
+<li>Carregamento do conjunto de dados</li>
+</ul>
+<pre class="r"><code>dados = read_csv(&quot;data/series_from_imdb.csv&quot;) %&gt;% 
+    filter(series_name %in% c(&quot;Sherlock&quot;,&quot;Nikita&quot;, &quot;Agents of S.H.I.E.L.D.&quot;, &quot;Vikings&quot;))</code></pre>
+</div>
+<div id="qual-das-series-e-mais-bem-avaliada-no-imdb" class="section level1">
+<h1>Qual das séries é mais bem avaliada no IMDB?</h1>
+<p>Como podemos ver no gráfico abaixo, a série Sherlock teve a maior média de acordo com as notas atribuídas pelos usuários, seguido pela série Nikita, Agents of Shield e Vikings. Também é possivel perceber que a diferença na média de nota entre essas quatro séries não é muito grande, todas elas se encontram com notas aproximadas de forma geral, apenas a série Vikings teve uma classificação um pouco mais baixa que as demais.</p>
+<pre class="r"><code>ggplot(dados, aes(x=series_name, y=user_rating, fill = series_name)) + 
+    stat_summary(fun.y=&quot;mean&quot;, geom=&quot;bar&quot;)</code></pre>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="muda-de-acordo-com-as-temporadas-da-serie" class="section level1">
+<h1>Muda de acordo com as temporadas da série?</h1>
+<p>Será que essas avaliações mudam de acordo com a temporada? Para respondermos essa pergunta e para termos uma noção melhor das notas atribuídas pelos usuários, analisaremos a atribuição de notas ao longo das temporadas de cada série.</p>
+<pre class="r"><code>ggplot(dados, mapping = aes(x=season, y=user_rating)) + 
+    geom_smooth(aes(color = series_name, fill = series_name)) + 
+    geom_jitter(aes(color = series_name)) +
+    facet_wrap(~series_name, ncol = 2)</code></pre>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Tomando como base a média das notas no primeiro gráfico, apesar da série Sherlock ter ficado em primeiro lugar, podemos ver no gráfico acima que a partir da segunda temporada a série teve uma queda nas notas atribuídas pelos usuários, enquando que na série Agents of S.H.I.E.L.D houve uma melhora nas notas atribuídas pelos usuários ao longo das temporadas. Podemos inferir que as pessoas que assitem a série Agents of S.H.I.E.L.D não gostaram da série de início, mas ao longo das temporadas suas opiniões mudaram e começaram a gostar da série.</p>
+<p>No entanto, na série Sherlock ocorreu o oposto, teve um grande apreço pelo público de início, mas ao longo das temporadas esse apreço caiu. Na série Nikita, as notas se mantiveram quase estáveis, porém com tendência ao aumento de sua nota nas últimas temporadas, e na série Vikings as notas começaram a cair a partir da segunda temporada.</p>
+</div>
+<div id="irregularidade-de-espisodios" class="section level1">
+<h1>Irregularidade de espisódios</h1>
+<p>Analisamos e mostramos nos gráficos anteriores informações referentes aos votos de cada série, mas será que houve irregulariade em seus episódios? Para podermos responder essa pergunta e visualizar se houve irregularidade ou não, vamos analisar a nota em função dos episódios de cada série. Como critério para irregularidade vamos considerar o pico de nota de um episóddio para outro.</p>
+<pre class="r"><code>ggplot(dados, mapping = aes(x=series_ep, y=user_rating)) + 
+    geom_smooth(aes(color = series_name, fill = series_name, scales = &#39;free_x&#39;)) + 
+    facet_wrap(~series_name, ncol = 2, scales = &#39;free_x&#39;)</code></pre>
+<p><img src="/AD1LABSpost/LAB1C1_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Podemos observar no gráfico acima o comportamento de cada série ao longo dos episódios, e podemos notar que não houve uma mudança brusca ou irregularidade de um episódio para outro, com exceção de Sherlock que apresentou uma tendêcia ao decaimento da nota ao longo dos episódios.</p>
+</div>
+
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Aillkeen. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="1">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">NEXT</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/" data-tooltip="Problema 1 Checkpoint 3 - Sua análise">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">PREVIOUS</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="1">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+          <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+          <i class="fa fa-twitter"></i><span>Share on Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Faillkeen.github.io%2FAD1LABS%2F1%2F01%2Fproblema-1-checkpoint-1---nossa-pergunta%2F">
+          <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">Aillkeen</h4>
+    
+      <div id="about-card-bio">Undergraduate in Computer Science - UFCG</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Computer Scientist
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        Brazil
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="Search" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center">no post found</div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-1---nossa-pergunta/">
+                <h3 class="media-heading">Problema 1 Checkpoint 1 - Nossa pergunta</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 0001
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">IntroduçãoOs dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB, no qual incluem informações como notas, espectadores, número de votos, temporadas das séries, e dados sobre episódios. O conjunto de dados e mais informações podem ser acessados em https://github.com/nazareno/imdb-series.
+Para análise dos dados, vamos utilizar apenas 4 séries do conjunto total, são elas:
+SherlockNikitaAgents of S.H.I.E.L.D.Vikings
+Bibliotecas utilizadas
+library(tidyverse)library(rvest)Carregamento do conjunto de dadosdados = read_csv(&quot;data/series_from_imdb.</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://aillkeen.github.io/AD1LABS/1/01/problema-1-checkpoint-3---sua-an%C3%A1lise/">
+                <h3 class="media-heading">Problema 1 Checkpoint 3 - Sua análise</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jan 1, 0001
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather">Os dados que serão analisados a seguir, são dados referentes as séries presentes no IMDB. O IMDB é um site que contém diversas informações sobre séries, filmes, celebridades etc. O conteúdo utilizado nas analises a seguir pode ser encontrado em https://github.com/nazareno/imdb-series.
+Os dados estão organizados em um arquivo csv no qual contém as seguintes informações:
+series_name: o nome da sérieseries_ep: o número referente ao episódioseason: número da temporadaseason_ep: número do episódio na temporadaurl: url para a página do episódio no IMDBEpisode: título do episódioUserRating: classificação do episódio de acordo com as notas atribuídas pelos usuáriosUserVotes: número de votos recebidosr1, r2,r3,r4…, r10: proporção de usuários que classificaram o episódio com pontuação 1, 2,3,4…, 10</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero="no post found"
+         data-message-one="1 post found"
+         data-message-other="{n} posts found">
+         2 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://aillkeen.github.io/AD1LABS/images/cover.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="/js/script-qi9wbxp2ya2j6p7wx1i6tgavftewndznf4v0hy2gvivk1rxgc3lm7njqb6bz.min.js"></script>
+
+
+  
+    <script src="https://aillkeen.github.io/AD1LABS/js/myscript.js" swapPaginator="true"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/aillkeen.github.io\/AD1LABS\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/';
+          
+            this.page.identifier = '\/AD1LABS\/AD1LABS\/1\/01\/problema-1-checkpoint-1---nossa-pergunta\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'hugo-tranquilpeak-theme';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
