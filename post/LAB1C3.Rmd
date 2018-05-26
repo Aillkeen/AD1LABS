@@ -26,6 +26,7 @@ Os dados estão organizados em um arquivo csv no qual contém as seguintes infor
 ```{r message=FALSE}
 library(tidyverse)
 library(rvest)
+theme_set(theme_minimal())
 ```
 
 * Carregamento dos dados
@@ -38,6 +39,8 @@ dados = read_csv("data/series_from_imdb.csv")
 
 Nem sempre as séries agradam a todos, muitos dos que começam a assistir a uma determinada série desistem dela por não achar interessante, porém o inverso também é verdadeiro, algumas pessoas começam a série sem gostar e após algumas temporadas são fisgadas pela série. Com base nessa questão, analisaremos se a quantidade de espectadores cresce/decresce ao passo que as avaliações referente as séries tbm cresce/decresce. Como no conjunto de dados não possui valores que referenciem a audiência do público em relação a série, utilizaremos a quantidade de votos como base para definir a quantidade de espectadores. Além disso, como a quantidade de dados é um pouco grande, utilizaremos apenas séries que possuem no mínimo 15 temporadas.
 
+> Cuidado com o efeito das escalas. Elas mudam muito no que dá para ver. 
+
 ```{r message=FALSE}
 
 series_15_seasons = dados %>%
@@ -46,8 +49,8 @@ series_15_seasons = dados %>%
     filter(season >= 15)
 series = filter(dados, series_name %in% c(series_15_seasons$series_name))
 ggplot(data = series, mapping = aes(x = user_rating, y = user_votes, color = series_name)) +
-           geom_point(aes(alpha = .2)) +
-           facet_wrap(~series_name, scales = "free_x", nrow = 4,ncol = 2) 
+           geom_point(alpha = .4, size = .5) +
+           facet_wrap(~series_name, scales = "free", nrow = 4,ncol = 2) 
 ```
 
 Podemos perceber que a quantidade de espectadores não cresce/decresce ao passo que as notas crescem/decrescem, apenas na série The Simpsons houve essa relação, pois ao passo que a nota cresceu a quantidade de espectadores tbm cresceu.
@@ -61,15 +64,15 @@ Será que séries com mais temporadas são mais bem avaliadas do que séries com
 series <- dados %>%
   group_by(series_name) %>%
   summarise(seasons = max(season),
-            seasonMean = max(season),
-            userRatingMean = floor(mean(user_rating))) %>%
+            userRatingMean = mean(user_rating)) %>%
     filter(seasons >= 15)
     
 
-orderedSeries <- arrange(series, desc(seasonMean))
-
-ggplot(data = orderedSeries, mapping = aes(x = seasonMean, y = userRatingMean, fill = series_name)) +
-   geom_bar(stat = "identity")
+ggplot(data = series, 
+       mapping = aes(x = seasons, 
+                     y = userRatingMean, 
+                     color = series_name)) +
+   geom_point(size = 4)
 ```
 
 Como podemos ver no gráfico acima, nem sempre a quantidade de temporadas define a avaliação da série, por exemplo: as séries American Idol e Bleach tiveram a mesma quantidade de temporadas, porém elas tiveram uma nota média diferente. Da mesma forma, a série Survivor teve em torno de 35 temporadas e mesmo assim obteve uma avaliação próxima da série One Piece que teve cerca de 20 temporadas.
@@ -79,25 +82,40 @@ Como podemos ver no gráfico acima, nem sempre a quantidade de temporadas define
 Os últimos episódios das séries geralmente tendem a causar mais impacto nos telespectadores por ser o episódio de encerramento da série, mas será que esse impacto influência na nota atribuída a esse episódio em relação aos demais? Como o conjunto de dados é muito grande, vamos analisar apenas as séries que possuem no mínimo 400 episódios e então verificaremos a resposta para esta questão.
 
 ```{r message=FALSE}
-
-
 series_400_eps = dados %>%
   group_by(series_name) %>%
     summarise(maxEpisode = max(series_ep)) %>%
     filter(maxEpisode >= 400)
 
-filteredSeries <- filter(dados, series_name %in% series_400_eps$series_name)
+filteredSeries <- dados %>% 
+    filter(series_name %in% series_400_eps$series_name) %>% 
+    group_by(series_name, season) %>% 
+    mutate(season_finale = season_ep == max(season_ep))
 
-ggplot(filteredSeries, mapping = aes(x = series_ep, y = user_rating, color = series_name, alpha = .5)) +
-    geom_line() +
-    geom_smooth() +
-    facet_wrap(~series_name, scales = "free_x", nrow = 3, ncol = 2)
+ggplot(filteredSeries, 
+       mapping = aes(x = series_ep, 
+                     y = user_rating, 
+                     color = season_finale)) +
+    geom_point(alpha = .5, size = .6) +
+    facet_wrap(~series_name, scales = "free_x", nrow = 3, ncol = 2) 
 
 ```
+
+```{r}
+ggplot(filteredSeries, 
+       mapping = aes(x = season_finale, 
+                     y = user_rating, 
+                     color = season_finale)) +
+    geom_jitter(alpha = .7, size = .6, width = .2) +
+    facet_wrap(~series_name, scales = "free_x", nrow = 3, ncol = 2) 
+```
+
 
 Como podemos perceber, a nota atribuída ao último episódio não foi tão diferenciada se comparada aos demais episódios, em geral as notas se mantiveram equilibradas ao longo dos episódios, inclusive no último.
 
 # Series com maior quantidade de votos tendem a ter notas melhores ou piores?
+
+> Repara que aqui você respondeu sobre episódios, e não sobre séries... 
 
 Séra qua a quantidade de espectadores que votam em determinada série influenciam no valor final da nota atribuída a elas? Vamos considerar as séries com mais de 400 episódios para responder essa questão.
 
@@ -112,6 +130,7 @@ series_400_eps = dados %>%
 filteredSeries <- filter(dados, series_name %in% series_400_eps$series_name)
 
 ggplot(filteredSeries, mapping = aes(x = user_votes, y = user_rating, color = series_name)) +
+    geom_point(size = .4, alpha = .5) + 
     geom_hline(aes(yintercept = mean(user_rating)), linetype="dashed", colour="black") +
     geom_smooth() +
   facet_wrap(~series_name, scales = "free_x", nrow = 3, ncol = 2)
